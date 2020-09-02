@@ -18,3 +18,9 @@ docker container run -d --name go-web-docker-1 -p 8080:8080 go-web-docker:v1.0.0
 ```bash
 curl localhost:8080
 ```
+
+You should see
+
+```bash
+Hello world from Go Web Server!
+```
