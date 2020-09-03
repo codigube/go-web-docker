@@ -2,13 +2,24 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
+
 	// Simple Web Server
 	http.HandleFunc("/", HelloServer)
-	http.ListenAndServe(":8080", nil)
+
+	portNum := os.Getenv("PORT")
+	if portNum == "" {
+		portNum = "8080"
+	}
+
+	log.Printf("Exposed port: %v", portNum)
+
+	http.ListenAndServe(":"+portNum, nil)
 }
 
 // HelloServer -
@@ -20,4 +31,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintln(w, "Hello world from Go Web Server!")
+
+	// Log
+	log.Printf("GO Environment: %v", os.Getenv("GO_ENV"))
 }
