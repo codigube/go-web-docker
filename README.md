@@ -25,3 +25,9 @@ You should see
 ```bash
 Hello world from Go Web Server!
 ```
+
+## Check container logs
+
+```bash
+docker container logs go-web-docker-1
+```
